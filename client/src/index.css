@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Merriweather:wght@400;700&family=Roboto:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+@layer base {
+  :root {
+    --background: #f4f7f5;
+    --foreground: #17211f;
+    --card: #ffffff;
+    --card-foreground: #17211f;
+    --primary: #0f766e;
+    --primary-foreground: #ffffff;
+    --border: #dbe5e1;
+    --muted: #e8f0ed;
+    --muted-foreground: #64736e;
+  }
+
+  .dark {
+    --background: #101817;
+    --foreground: #edf5f1;
+    --card: #172320;
+    --card-foreground: #edf5f1;
+    --primary: #f2b84b;
+    --primary-foreground: #17211f;
+    --border: #2a3a35;
+    --muted: #20302c;
+    --muted-foreground: #9cafaa;
+  }
+
+  * {
+    border-color: var(--border);
+  }
+
+  body {
+    background-color: var(--background);
+    background-image: radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--foreground) 7%, transparent) 1px, transparent 0);
+    background-size: 24px 24px;
+    color: var(--foreground);
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3 {
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  .survey-title-clamp {
+    max-width: 45vw;
+  }
+
+  .modal-full-width {
+    max-width: 95vw;
+    height: 95vh;
+  }
+
+  .modal-max-height {
+    max-height: 90vh;
+  }
+
+  .logic-flow-height,
+  .preview-height {
+    height: calc(100vh - 8rem);
+  }
+
+  .workspace-panel {
+    background: color-mix(in srgb, var(--card) 92%, transparent);
+    box-shadow: 0 18px 50px color-mix(in srgb, var(--foreground) 7%, transparent);
+    backdrop-filter: blur(16px);
+  }
+
+  .dashboard-grid {
+    animation: rise-in 450ms ease-out both;
+  }
+
+  .dashboard-card {
+    box-shadow: 0 12px 30px color-mix(in srgb, var(--foreground) 6%, transparent);
+    transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  }
+
+  .dashboard-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 38px color-mix(in srgb, var(--foreground) 11%, transparent);
+  }
+
+  .logic-flow-canvas {
+    background: color-mix(in srgb, var(--card) 88%, var(--background));
+    --xy-controls-button-background-color: var(--card);
+    --xy-controls-button-background-color-hover: var(--muted);
+    --xy-controls-button-color: var(--foreground);
+    --xy-controls-button-border-color: var(--border);
+    --xy-attribution-background-color: color-mix(in srgb, var(--card) 92%, transparent);
+    --xy-attribution-color: var(--muted-foreground);
+    --xy-background-color: transparent;
+  }
+
+  .logic-flow-canvas .react-flow__controls {
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 12px 25px color-mix(in srgb, var(--foreground) 12%, transparent);
+  }
+
+  .logic-flow-canvas .react-flow__controls-button {
+    width: 32px;
+    height: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logic-flow-canvas .react-flow__controls-button:last-child {
+    border-bottom: 0;
+  }
+
+  .logic-flow-canvas .react-flow__controls-button svg {
+    fill: var(--foreground);
+    stroke: var(--foreground);
+  }
+
+  .logic-flow-canvas .react-flow__attribution {
+    border: 1px solid var(--border);
+    border-radius: 8px 0 0;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+  }
+
+  .logic-flow-canvas .react-flow__attribution a {
+    color: var(--muted-foreground);
+  }
+
+  .logic-flow-canvas .react-flow__edge-text {
+    fill: var(--primary);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+  }
+
+  .logic-flow-canvas .react-flow__edge-textbg {
+    fill: var(--card);
+    stroke: var(--border);
+    stroke-width: 1px;
+  }
+
+  .public-survey-shell {
+    background-image: radial-gradient(circle at 1px 1px, color-mix(in srgb, currentColor 8%, transparent) 1px, transparent 0);
+    background-size: 26px 26px;
+  }
+
+  .public-survey-card {
+    box-shadow: 0 24px 70px color-mix(in srgb, currentColor 10%, transparent);
+    backdrop-filter: blur(18px);
+  }
+
+  .public-survey-option {
+    box-shadow: 0 4px 12px color-mix(in srgb, currentColor 4%, transparent);
+  }
+
+  .public-survey-option:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px color-mix(in srgb, currentColor 8%, transparent);
+  }
+
+  .public-survey-input::placeholder {
+    color: color-mix(in srgb, currentColor 48%, transparent);
+  }
+
+  .public-survey-scale {
+    box-shadow: 0 5px 14px color-mix(in srgb, currentColor 5%, transparent);
+  }
+
+  @media (max-width: 640px) {
+    .public-survey-card {
+      border-radius: 1.35rem;
+    }
+
+    .public-survey-kicker {
+      letter-spacing: 0.14em;
+    }
+  }
+
+  @keyframes rise-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}

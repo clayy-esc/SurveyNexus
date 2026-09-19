@@ -13,8 +13,21 @@ const app = express();
 app.use(helmet());
 
 // CORS
+const clientUrlClean = (CLIENT_URL || '').replace(/\/+$/, '');
 app.use(cors({
-  origin: CLIENT_URL,
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+    const cleanOrigin = origin.replace(/\/+$/, '');
+    if (
+      cleanOrigin === clientUrlClean ||
+      cleanOrigin === 'http://localhost:5173' ||
+      cleanOrigin === 'http://localhost:5174' ||
+      cleanOrigin.endsWith('.vercel.app')
+    ) {
+      return callback(null, true);
+    }
+    return callback(null, false);
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],

@@ -1,0 +1,57 @@
+<svg viewBox="0 0 64 64" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="snFavArm1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#818cf8" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+    <linearGradient id="snFavArm2" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#f43f5e" />
+      <stop offset="50%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <radialGradient id="snFavCore" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="40%" stop-color="#cffafe" />
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0" />
+    </radialGradient>
+    <filter id="snFavGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1.2" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Transparent Background with subtle core halo -->
+  <circle cx="32" cy="32" r="26" fill="url(#snFavCore)" opacity="0.35" />
+
+  <!-- Harmonic Barred Spiral Arm Alpha (North-West) -->
+  <path d="M 12 24 C 18 11, 38 8, 50 16 C 60 24, 60 38, 48 48 C 40 54, 27 52, 21 43 C 17 37, 19 28, 27 26 C 33 24, 38 28, 36 34" 
+        stroke="url(#snFavArm1)" 
+        stroke-width="5.5" 
+        stroke-linecap="round" 
+        fill="none" 
+        filter="url(#snFavGlow)" />
+
+  <!-- Harmonic Barred Spiral Arm Beta (South-East) -->
+  <path d="M 52 40 C 46 53, 26 56, 14 48 C 4 40, 4 26, 16 16 C 24 10, 37 12, 43 21 C 47 27, 45 36, 37 38 C 31 40, 26 36, 28 30" 
+        stroke="url(#snFavArm2)" 
+        stroke-width="5.5" 
+        stroke-linecap="round" 
+        fill="none" 
+        filter="url(#snFavGlow)" />
+
+  <!-- High-Visibility Constellation Survey Nodes -->
+  <circle cx="12" cy="24" r="3.8" fill="#38bdf8" />
+  <circle cx="12" cy="24" r="1.8" fill="#ffffff" />
+
+  <circle cx="52" cy="40" r="3.8" fill="#f43f5e" />
+  <circle cx="52" cy="40" r="1.8" fill="#ffffff" />
+
+  <!-- Singularity Starlight Diamond / Core Nexus -->
+  <circle cx="32" cy="32" r="6" fill="#ffffff" filter="url(#snFavGlow)" />
+  <path d="M 32 23 Q 32 32 23 32 Q 32 32 32 41 Q 32 32 41 32 Q 32 32 32 23 Z" fill="#ffffff" />
+  <circle cx="32" cy="32" r="2.5" fill="#38bdf8" />
+</svg>

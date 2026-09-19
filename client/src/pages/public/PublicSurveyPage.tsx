@@ -592,7 +592,7 @@ export const PublicSurveyPage: React.FC = () => {
           
           <div className="mt-8 text-center pb-8 opacity-50 hover:opacity-100 transition-opacity">
             <a href="https://surveynexus.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-xs font-semibold" style={{ color: mutedTextColor }}>
-              Powered by <img src={logoSvg} className="w-4 h-4 ml-1.5 mr-1 grayscale" alt="SurveyNexus" /> <span className="tracking-tight">SurveyNexus</span>
+              Powered by <img src={logoSvg} className="w-4 h-4 ml-1.5 mr-1" alt="SurveyNexus" /> <span className="tracking-tight">SurveyNexus</span>
             </a>
           </div>
 

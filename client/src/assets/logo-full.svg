@@ -1,0 +1,87 @@
+<svg viewBox="0 0 340 70" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Galactic Gradients -->
+    <linearGradient id="fullArm1" x1="15%" y1="15%" x2="85%" y2="85%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="30%" stop-color="#6366f1" />
+      <stop offset="65%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#ec4899" />
+    </linearGradient>
+    <linearGradient id="fullArm2" x1="85%" y1="85%" x2="15%" y2="15%">
+      <stop offset="0%" stop-color="#f43f5e" />
+      <stop offset="35%" stop-color="#a855f7" />
+      <stop offset="70%" stop-color="#4f46e5" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+    <linearGradient id="nexusTextGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#818cf8" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+    <radialGradient id="fullSingularity" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="30%" stop-color="#cffafe" />
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0" />
+    </radialGradient>
+    <filter id="fullGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1.8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Left: Galactic Nexus Icon (Coordinates mapped within 70x70 bounding box) -->
+  <g transform="translate(5, 5)">
+    <!-- Nebula glow -->
+    <circle cx="30" cy="30" r="28" fill="url(#fullSingularity)" opacity="0.3" />
+
+    <!-- Barred Spiral Arms -->
+    <path d="M 12 21 C 15 11, 26 6, 36 8 C 45 10, 52 17, 52 27 C 52 36, 46 43, 37 46 C 30 48, 23 46, 19 41 C 16 38, 17 33, 20 30 C 23 27, 28 28, 30 30 C 31 31, 31 33, 30 34" 
+          stroke="url(#fullArm1)" stroke-width="3.6" stroke-linecap="round" fill="none" filter="url(#fullGlow)" />
+
+    <path d="M 48 39 C 45 49, 34 54, 24 52 C 15 50, 8 43, 8 33 C 8 24, 14 17, 23 14 C 30 12, 37 14, 41 19 C 44 22, 43 27, 40 30 C 37 33, 32 32, 30 30 C 29 29, 29 27, 30 26" 
+          stroke="url(#fullArm2)" stroke-width="3.6" stroke-linecap="round" fill="none" filter="url(#fullGlow)" />
+
+    <!-- Orbital Survey Nodes -->
+    <circle cx="12" cy="21" r="2.8" fill="#38bdf8" />
+    <circle cx="12" cy="21" r="1.4" fill="#ffffff" />
+    <circle cx="48" cy="39" r="2.8" fill="#f43f5e" />
+    <circle cx="48" cy="39" r="1.4" fill="#ffffff" />
+
+    <!-- Singularity Star Core -->
+    <circle cx="30" cy="30" r="4.5" fill="#ffffff" filter="url(#fullGlow)" />
+    <path d="M 30 22 Q 30 30 22 30 Q 30 30 30 38 Q 30 30 38 30 Q 30 30 30 22 Z" fill="#ffffff" />
+  </g>
+
+  <!-- Right: Modern Brand Wordmark -->
+  <!-- "Survey" in clean geometric bold -->
+  <text x="76" y="44" 
+        font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" 
+        font-size="32" 
+        font-weight="800" 
+        letter-spacing="-0.03em" 
+        fill="#ffffff">Survey</text>
+
+  <!-- "Nexus" in cosmic gradient -->
+  <text x="186" y="44" 
+        font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" 
+        font-size="32" 
+        font-weight="800" 
+        letter-spacing="-0.03em" 
+        fill="url(#nexusTextGrad)">Nexus</text>
+
+  <!-- Cosmic Subtitle / Platform Tag -->
+  <text x="77" y="58" 
+        font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" 
+        font-size="9" 
+        font-weight="600" 
+        letter-spacing="0.22em" 
+        text-transform="uppercase" 
+        fill="#94a3b8">INTELLIGENT SURVEY PLATFORM</text>
+
+  <!-- Stellar Sparkle Accent above the "x" in Nexus -->
+  <path d="M 246 22 Q 246 25 243 25 Q 246 25 246 28 Q 246 25 249 25 Q 246 25 246 22 Z" fill="#38bdf8" />
+  <circle cx="246" cy="25" r="0.8" fill="#ffffff" />
+</svg>

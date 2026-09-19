@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { LayoutDashboard, FileSpreadsheet, Eye, BarChart3, Palette, Settings, LogOut, X, Sparkles } from 'lucide-react';
-import logoSvg from '../../assets/logo.svg';
+import { SurveyNexusLogo } from '../common/SurveyNexusLogo';
 
 interface SidebarProps {
   surveyId?: string;
@@ -57,13 +57,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ surveyId, onLogout, isMobileOp
       )}
       <aside id="survey-navigation" aria-label="Survey navigation" className={`fixed inset-y-0 left-0 z-40 flex h-screen w-72 shrink-0 -translate-x-full flex-col border-r border-border bg-card/90 shadow-xl backdrop-blur-xl transition-transform duration-200 ease-out md:static md:w-64 md:translate-x-0 md:transition-none ${isMobileOpen ? 'translate-x-0' : ''}`}>
       <div className="h-20 flex items-center px-5 border-b border-border">
-        <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 shadow-sm">
-          <img src={logoSvg} alt="SurveyNexus" className="w-7 h-7" />
-        </div>
-        <div className="ml-3">
-          <span className="block font-extrabold text-base tracking-tight">SurveyNexus</span>
-          <span className="block text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground">Signal studio</span>
-        </div>
+        <SurveyNexusLogo size={36} showText={true} subtitle="Signal Studio" interactive={true} />
         <button
           type="button"
           onClick={closeOnMobile}

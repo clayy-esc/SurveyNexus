@@ -7,7 +7,7 @@ import { useAuth } from '../../contexts/useAuth';
 import { useToast } from '../../components/ui/useToast';
 import api from '../../lib/api';
 import { LogIn } from 'lucide-react';
-import logoSvg from '../../assets/logo.svg';
+import { SurveyNexusLogo } from '../../components/common/SurveyNexusLogo';
 
 export const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -35,9 +35,8 @@ export const LoginPage: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-muted/30">
-      <div className="mb-8 flex items-center gap-3">
-        <img src={logoSvg} alt="SurveyNexus" className="w-12 h-12" />
-        <span className="text-3xl font-bold tracking-tight text-foreground">SurveyNexus</span>
+      <div className="mb-8 flex justify-center">
+        <SurveyNexusLogo size={48} showText={true} subtitle="Cosmic Intelligence Platform" interactive={true} />
       </div>
       <Card className="w-full max-w-md shadow-xl border-border/50">
         <CardHeader className="space-y-1 text-center">

@@ -5,11 +5,18 @@ exports.getSurvey = async (req, res, next) => {
   try {
     const survey = await Survey.findOne({
       publicSlug: req.params.slug,
-      status: 'published',
     }).select('title description questions theme settings publicSlug status');
 
     if (!survey) {
-      return res.status(404).json({ error: 'Survey not found or no longer accepting responses' });
+      return res.status(404).json({ error: 'Survey not found or no longer available.' });
+    }
+
+    if (survey.status === 'draft') {
+      return res.status(403).json({ error: 'This survey is currently in draft mode and has not been published yet.' });
+    }
+
+    if (survey.status === 'closed') {
+      return res.status(403).json({ error: 'This survey is closed and is no longer accepting responses.' });
     }
 
     res.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');

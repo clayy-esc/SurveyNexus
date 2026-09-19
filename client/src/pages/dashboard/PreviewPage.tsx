@@ -2,12 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { AppShell } from '../../components/layout/AppShell';
 import { Spinner } from '../../components/ui/Spinner';
+import { useToast } from '../../components/ui/useToast';
 import { Survey } from '../../types';
 import api from '../../lib/api';
 
 export const PreviewPage: React.FC = () => {
   const { surveyId } = useParams<{ surveyId: string }>();
   const [survey, setSurvey] = useState<Survey | null>(null);
+  const [isPublishing, setIsPublishing] = useState(false);
+  const [isUnpublishing, setIsUnpublishing] = useState(false);
+  const { addToast } = useToast();
 
   useEffect(() => {
     const fetchSurvey = async () => {
@@ -23,8 +27,42 @@ export const PreviewPage: React.FC = () => {
     fetchSurvey();
   }, [surveyId]);
 
+  const handlePublish = async () => {
+    if (!survey) return;
+    setIsPublishing(true);
+    try {
+      const res = await api.post(`/surveys/${survey._id}/publish`);
+      setSurvey(res.data.survey);
+      addToast('Survey published successfully!', 'success');
+    } catch (err: any) {
+      addToast(err.response?.data?.error || 'Failed to publish survey', 'error');
+    } finally {
+      setIsPublishing(false);
+    }
+  };
+
+  const handleUnpublish = async () => {
+    if (!survey) return;
+    setIsUnpublishing(true);
+    try {
+      const res = await api.post(`/surveys/${survey._id}/unpublish`);
+      setSurvey(res.data.survey);
+      addToast('Survey unpublished successfully', 'success');
+    } catch (err: any) {
+      addToast(err.response?.data?.error || 'Failed to unpublish survey', 'error');
+    } finally {
+      setIsUnpublishing(false);
+    }
+  };
+
   return (
-    <AppShell survey={survey}>
+    <AppShell
+      survey={survey}
+      onPublish={handlePublish}
+      isPublishing={isPublishing}
+      onUnpublish={handleUnpublish}
+      isUnpublishing={isUnpublishing}
+    >
       {!survey ? (
         <div className="h-full flex items-center justify-center"><Spinner size="lg" /></div>
       ) : (

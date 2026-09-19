@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
-import { Survey, LogicRule } from '../../types';
+import { Survey, LogicRule, SurveyTheme } from '../../types';
 import api from '../../lib/api';
 import { Spinner } from '../../components/ui/Spinner';
 import { Button } from '../../components/ui/Button';
@@ -43,8 +43,8 @@ export const PublicSurveyPage: React.FC = () => {
         } else {
           setSurvey(fetchedSurvey);
         }
-      } catch {
-        setError('Survey not found or is no longer available.');
+      } catch (err: any) {
+        setError(err.response?.data?.error || 'Survey not found or is no longer available.');
       } finally {
         setIsLoading(false);
       }
@@ -164,11 +164,12 @@ export const PublicSurveyPage: React.FC = () => {
     );
   }
 
-  const configuredTheme = survey.theme || {
+  const configuredTheme: SurveyTheme = survey.theme || {
     primaryColor: '#6366f1',
     backgroundColor: '#f9fafb',
     fontFamily: 'Inter',
-    layout: 'single_page'
+    layout: 'single_page',
+    customCSS: '',
   };
   const isDarkTheme = appTheme === 'dark' || (appTheme === 'system' && systemPrefersDark);
   const theme = {

@@ -55,15 +55,25 @@ export const Topbar: React.FC<TopbarProps> = ({ survey, onPublish, isPublishing,
                 {survey.status}
               </span>
               {survey.publicSlug && (
-                <a 
-                  href={`/s/${survey.publicSlug}`} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center text-[11px] font-semibold text-muted-foreground transition-colors hover:text-primary"
-                >
-                  <ExternalLink className="w-3 h-3 mr-1" />
-                  View Public Link
-                </a>
+                survey.status === 'published' ? (
+                  <a 
+                    href={`/s/${survey.publicSlug}`} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 transition-colors hover:underline"
+                  >
+                    <ExternalLink className="w-3 h-3 mr-1" />
+                    View Live Survey
+                  </a>
+                ) : (
+                  <span
+                    className="flex items-center text-[11px] font-medium text-muted-foreground/60 cursor-help"
+                    title="Publish the survey to activate this public link"
+                  >
+                    <ExternalLink className="w-3 h-3 mr-1 opacity-40" />
+                    Live Link (Requires Publish)
+                  </span>
+                )
               )}
             </div>
           </div>

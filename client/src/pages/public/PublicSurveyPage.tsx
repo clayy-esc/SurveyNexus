@@ -150,24 +150,24 @@ export const PublicSurveyPage: React.FC = () => {
   };
 
   if (isLoading) {
-    return <div className="min-h-screen flex items-center justify-center bg-gray-50"><Spinner size="lg" /></div>;
+    return <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: 'var(--background)' }}><Spinner size="lg" /></div>;
   }
 
   if (error || !survey) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-gray-50">
-        <div className="max-w-md w-full bg-white p-8 rounded-xl shadow-lg text-center border-t-4 border-red-500">
-          <h2 className="text-xl font-bold text-gray-900 mb-2">Survey unavailable</h2>
-          <p className="text-gray-600">{error}</p>
+      <div className="min-h-screen flex flex-col items-center justify-center p-4" style={{ backgroundColor: 'var(--background)' }}>
+        <div className="max-w-md w-full p-8 rounded-xl shadow-lg text-center border-t-4 animate-in zoom-in-95 fade-in duration-500" style={{ backgroundColor: 'var(--card)', borderTopColor: 'var(--primary)' }}>
+          <h2 className="text-xl font-bold mb-2" style={{ color: 'var(--foreground)' }}>Survey unavailable</h2>
+          <p style={{ color: 'var(--muted-foreground)' }}>{error}</p>
         </div>
       </div>
     );
   }
 
   const configuredTheme: SurveyTheme = survey.theme || {
-    primaryColor: '#6366f1',
-    backgroundColor: '#f9fafb',
-    fontFamily: 'Inter',
+    primaryColor: '#6b21a8',
+    backgroundColor: '#f8f7ff',
+    fontFamily: 'Manrope',
     layout: 'single_page',
     customCSS: '',
   };
@@ -175,16 +175,16 @@ export const PublicSurveyPage: React.FC = () => {
   const theme = {
     ...configuredTheme,
     primaryColor: isDarkTheme
-      ? configuredTheme.darkPrimaryColor || configuredTheme.primaryColor
+      ? configuredTheme.darkPrimaryColor || '#c084fc'
       : configuredTheme.lightPrimaryColor || configuredTheme.primaryColor,
     backgroundColor: isDarkTheme
-      ? configuredTheme.darkBackgroundColor || '#0f172a'
+      ? configuredTheme.darkBackgroundColor || '#0b0914'
       : configuredTheme.lightBackgroundColor || configuredTheme.backgroundColor,
   };
-  const surfaceColor = isDarkTheme ? '#1e293b' : '#ffffff';
-  const textColor = isDarkTheme ? '#f8fafc' : '#111827';
-  const mutedTextColor = isDarkTheme ? '#cbd5e1' : '#6b7280';
-  const controlBorderColor = isDarkTheme ? '#475569' : '#e5e7eb';
+  const surfaceColor = isDarkTheme ? '#131022' : '#ffffff';
+  const textColor = isDarkTheme ? '#f1ecf8' : '#181124';
+  const mutedTextColor = isDarkTheme ? '#8b7ca6' : '#6d5f8a';
+  const controlBorderColor = isDarkTheme ? '#272144' : '#e6e0f8';
 
   const currentQ = survey.questions[currentQuestionIndex];
   const isSinglePage = theme.layout === 'single_page';
@@ -330,12 +330,12 @@ export const PublicSurveyPage: React.FC = () => {
   if (isSubmitted) {
     return (
       <div className="min-h-screen flex items-center justify-center p-4 transition-colors duration-500" style={{ backgroundColor: theme.backgroundColor, fontFamily: theme.fontFamily, color: textColor }}>
-        <div className="max-w-lg w-full p-10 rounded-2xl shadow-xl text-center border-t-8" style={{ backgroundColor: surfaceColor, borderTopColor: theme.primaryColor }}>
-          <CheckCircle2 className="w-16 h-16 mx-auto mb-6" style={{ color: theme.primaryColor }} />
-          <h2 className="text-2xl font-bold mb-2" style={{ color: textColor }}>Thank you!</h2>
-          <p style={{ color: mutedTextColor }}>Your response has been recorded.</p>
+        <div className="max-w-lg w-full p-10 rounded-2xl shadow-xl text-center border-t-8 animate-in zoom-in-95 fade-in duration-700 ease-out fill-mode-forwards" style={{ backgroundColor: surfaceColor, borderTopColor: theme.primaryColor }}>
+          <CheckCircle2 className="w-16 h-16 mx-auto mb-6 animate-in zoom-in-50 spin-in-12 fade-in delay-200 duration-500 ease-out fill-mode-both" style={{ color: theme.primaryColor }} />
+          <h2 className="text-2xl font-bold mb-2 animate-in slide-in-from-bottom-4 fade-in delay-300 duration-500 ease-out fill-mode-both" style={{ color: textColor }}>Thank you!</h2>
+          <p className="animate-in slide-in-from-bottom-2 fade-in delay-[400ms] duration-500 ease-out fill-mode-both" style={{ color: mutedTextColor }}>Your response has been recorded.</p>
           {isPreview && (
-            <div className="mt-8 p-4 bg-amber-50 text-amber-800 text-sm rounded-lg border border-amber-200">
+            <div className="mt-8 p-4 bg-amber-50 text-amber-800 text-sm rounded-lg border border-amber-200 animate-in fade-in delay-[500ms] duration-500 fill-mode-both">
               Note: You are in Preview Mode. This submission was not saved to the database.
             </div>
           )}

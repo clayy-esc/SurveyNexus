@@ -9,6 +9,7 @@ import api from '../../lib/api';
 import { UserPlus, KeyRound } from 'lucide-react';
 import { Modal } from '../../components/ui/Modal';
 import { SurveyNexusLogo } from '../../components/common/SurveyNexusLogo';
+import { StarfieldBackground } from '../../components/ui/StarfieldBackground';
 
 export const RegisterPage: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -47,11 +48,13 @@ export const RegisterPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-muted/30">
-      <div className="mb-8 flex justify-center">
-        <SurveyNexusLogo size={48} showText={true} subtitle="Cosmic Intelligence Platform" interactive={true} />
-      </div>
-      <Card className="w-full max-w-md shadow-xl border-border/50">
+    <div className="min-h-screen flex flex-col items-center justify-center p-4 relative">
+      <StarfieldBackground />
+      <div className="relative z-10 w-full max-w-md flex flex-col items-center">
+        <div className="mb-8 flex justify-center w-full">
+          <SurveyNexusLogo size={48} showText={true} subtitle="Cosmic Intelligence Platform" interactive={true} />
+        </div>
+        <Card className="w-full shadow-xl border-border/50 backdrop-blur-xl bg-card/80">
         <CardHeader className="space-y-1 text-center">
           <CardTitle className="text-2xl">Create an account</CardTitle>
           <CardDescription>Enter your details below to create your account</CardDescription>
@@ -105,6 +108,7 @@ export const RegisterPage: React.FC = () => {
           </CardFooter>
         </form>
       </Card>
+      </div>
 
       <Modal isOpen={!!recoveryCode} onClose={handleCloseRecovery} title="Save Your Recovery Code">
         <div className="space-y-4 py-4 text-center">

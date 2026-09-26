@@ -6,6 +6,8 @@ import { Button } from '../../components/ui/Button';
 import { useToast } from '../../components/ui/useToast';
 import api from '../../lib/api';
 import { RefreshCcw, ArrowLeft } from 'lucide-react';
+import { SurveyNexusLogo } from '../../components/common/SurveyNexusLogo';
+import { StarfieldBackground } from '../../components/ui/StarfieldBackground';
 
 export const ForgotPasswordPage: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -36,8 +38,10 @@ export const ForgotPasswordPage: React.FC = () => {
 
   if (success) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-muted/30">
-        <Card className="w-full max-w-md shadow-xl border-border/50 text-center">
+      <div className="min-h-screen flex flex-col items-center justify-center p-4 relative">
+        <StarfieldBackground />
+        <div className="relative z-10 w-full max-w-md flex flex-col items-center">
+          <Card className="w-full shadow-xl border-border/50 backdrop-blur-xl bg-card/80 text-center">
           <CardHeader>
             <CardTitle className="text-2xl text-green-600">Password Reset Successful</CardTitle>
             <CardDescription>Your password has been changed.</CardDescription>
@@ -54,13 +58,19 @@ export const ForgotPasswordPage: React.FC = () => {
             </Button>
           </CardContent>
         </Card>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-muted/30">
-      <Card className="w-full max-w-md shadow-xl border-border/50">
+    <div className="min-h-screen flex flex-col items-center justify-center p-4 relative">
+      <StarfieldBackground />
+      <div className="relative z-10 w-full max-w-md flex flex-col items-center">
+        <div className="mb-8 flex justify-center w-full">
+          <SurveyNexusLogo size={48} showText={true} subtitle="Cosmic Intelligence Platform" interactive={true} />
+        </div>
+        <Card className="w-full shadow-xl border-border/50 backdrop-blur-xl bg-card/80">
         <CardHeader className="space-y-1 text-center">
           <CardTitle className="text-2xl">Reset Password</CardTitle>
           <CardDescription>Enter your email and recovery code to reset your password.</CardDescription>
@@ -111,6 +121,7 @@ export const ForgotPasswordPage: React.FC = () => {
           </CardFooter>
         </form>
       </Card>
+      </div>
     </div>
   );
 };

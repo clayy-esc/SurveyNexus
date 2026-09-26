@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+    <defs>
+        <!-- Galactic Gradient -->
+        <linearGradient id="galaxyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#00f2fe" />
+            <stop offset="50%" stop-color="#4facfe" />
+            <stop offset="75%" stop-color="#7f00ff" />
+            <stop offset="100%" stop-color="#ff0844" />
+        </linearGradient>
+
+        <!-- Glow Effect for Central Star -->
+        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="8" result="blur" />
+            <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
+
+        <!-- Arrowhead Marker -->
+        <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="url(#galaxyGrad)" />
+        </marker>
+
+        <!-- Reusable Document Icon -->
+        <g id="docIcon" stroke="#fff" stroke-width="1.5" fill="none">
+            <path d="M -6 -8 L 2 -8 L 6 -4 L 6 8 L -6 8 Z" />
+            <path d="M 2 -8 L 2 -4 L 6 -4" />
+            <line x1="-3" y1="0" x2="3" y2="0" />
+            <line x1="-3" y1="3" x2="3" y2="3" />
+        </g>
+
+        <!-- Reusable Checkmark Icon -->
+        <g id="checkIcon" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M -5 0 L -1 4 L 6 -4" />
+        </g>
+    </defs>
+
+    <style>
+        /* CSS Animations */
+        .spin-slow {
+            transform-origin: 300px 300px;
+            animation: spin 24s linear infinite;
+        }
+
+        .spin-medium {
+            transform-origin: 300px 300px;
+            animation: spin 16s linear infinite reverse;
+        }
+
+        .spin-fast {
+            transform-origin: 300px 300px;
+            animation: spin 10s linear infinite;
+        }
+
+        .pulse {
+            transform-origin: 300px 300px;
+            animation: pulse 2s ease-in-out infinite alternate;
+        }
+
+        /* Counter-rotate icons so they stay upright while the galaxy spins */
+        .counter-spin-slow {
+            animation: counter-spin 24s linear infinite;
+        }
+
+        .counter-spin-medium {
+            animation: counter-spin-reverse 16s linear infinite reverse;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes counter-spin {
+            100% {
+                transform: rotate(-360deg);
+            }
+        }
+
+        @keyframes counter-spin-reverse {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+        }
+    </style>
+
+    <!-- Background / Base (Transparent, but adding a faint nebula glow behind the star) -->
+    <circle cx="300" cy="300" r="200" fill="url(#galaxyGrad)" opacity="0.1" filter="url(#glow)" />
+
+    <!-- Outer Orbit (Data Collection Paths) -->
+    <g class="spin-slow">
+        <!-- Broken orbital lines with arrows -->
+        <circle cx="300" cy="300" r="240" fill="none" stroke="url(#galaxyGrad)" stroke-width="6"
+            stroke-dasharray="250 150 100 50" marker-end="url(#arrow)" opacity="0.7" />
+        <circle cx="300" cy="300" r="210" fill="none" stroke="url(#galaxyGrad)" stroke-width="4"
+            stroke-dasharray="150 200 300 80" marker-end="url(#arrow)" opacity="0.5" />
+
+        <!-- Outer Survey Nodes -->
+        <g transform="translate(60, 300)">
+            <circle r="18" fill="#ff0844" filter="url(#glow)" />
+            <g class="counter-spin-slow">
+                <use href="#docIcon" />
+            </g>
+        </g>
+        <g transform="translate(300, 60)">
+            <circle r="18" fill="#00f2fe" filter="url(#glow)" />
+            <g class="counter-spin-slow">
+                <use href="#checkIcon" />
+            </g>
+        </g>
+        <g transform="translate(470, 470)">
+            <circle r="18" fill="#7f00ff" filter="url(#glow)" />
+            <g class="counter-spin-slow">
+                <use href="#docIcon" />
+            </g>
+        </g>
+    </g>
+
+    <!-- Mid Orbit (Data Processing Paths) -->
+    <g class="spin-medium">
+        <circle cx="300" cy="300" r="160" fill="none" stroke="url(#galaxyGrad)" stroke-width="5"
+            stroke-dasharray="180 120" marker-end="url(#arrow)" opacity="0.8" />
+        <circle cx="300" cy="300" r="130" fill="none" stroke="url(#galaxyGrad)" stroke-width="3"
+            stroke-dasharray="90 90" opacity="0.6" />
+
+        <!-- Mid Survey Nodes -->
+        <g transform="translate(140, 300)">
+            <circle r="15" fill="#4facfe" filter="url(#glow)" />
+            <g class="counter-spin-medium">
+                <use href="#checkIcon" />
+            </g>
+        </g>
+        <g transform="translate(300, 460)">
+            <circle r="15" fill="#ff0844" filter="url(#glow)" />
+            <g class="counter-spin-medium">
+                <use href="#docIcon" />
+            </g>
+        </g>
+    </g>
+
+    <!-- Inner Orbit (Data Inflow) -->
+    <g class="spin-fast">
+        <circle cx="300" cy="300" r="80" fill="none" stroke="url(#galaxyGrad)" stroke-width="4" stroke-dasharray="80 80"
+            marker-end="url(#arrow)" opacity="0.9" />
+
+        <g transform="translate(250, 230)">
+            <circle r="10" fill="#fff" opacity="0.8" filter="url(#glow)" />
+        </g>
+    </g>
+
+    <!-- Central Star (Data Nexus) -->
+    <g class="pulse">
+        <!-- Outer Star Glow -->
+        <path d="M 300 180 Q 300 300 420 300 Q 300 300 300 420 Q 300 300 180 300 Q 300 300 300 180 Z"
+            fill="url(#galaxyGrad)" opacity="0.5" filter="url(#glow)" />
+        <!-- Inner Star Core -->
+        <path d="M 300 220 Q 300 300 380 300 Q 300 300 300 380 Q 300 300 220 300 Q 300 300 300 220 Z" fill="#ffffff"
+            filter="url(#glow)" />
+        <!-- Center Survey Database Dot -->
+        <circle cx="300" cy="300" r="12" fill="#00f2fe" />
+    </g>
+
+</svg>

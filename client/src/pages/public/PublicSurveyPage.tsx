@@ -5,7 +5,6 @@ import api from '../../lib/api';
 import { Spinner } from '../../components/ui/Spinner';
 import { Button } from '../../components/ui/Button';
 import { ArrowLeft, ArrowRight, Check, CheckCircle2, Sparkles } from 'lucide-react';
-import logoSvg from '../../assets/logo.svg';
 import { useTheme } from '../../contexts/useTheme';
 
 export const PublicSurveyPage: React.FC = () => {
@@ -592,7 +591,7 @@ export const PublicSurveyPage: React.FC = () => {
           
           <div className="mt-8 text-center pb-8 opacity-50 hover:opacity-100 transition-opacity">
             <a href="https://surveynexus.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-xs font-semibold" style={{ color: mutedTextColor }}>
-              Powered by <img src={logoSvg} className="w-4 h-4 ml-1.5 mr-1" alt="SurveyNexus" /> <span className="tracking-tight">SurveyNexus</span>
+              Powered by <img src="/favicon.svg" className="w-4 h-4 ml-1.5 mr-1" alt="SurveyNexus" /> <span className="tracking-tight">SurveyNexus</span>
             </a>
           </div>
 

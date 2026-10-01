@@ -66,8 +66,8 @@ export const PreviewPage: React.FC = () => {
       {!survey ? (
         <div className="h-full flex items-center justify-center"><Spinner size="lg" /></div>
       ) : (
-        <div className="preview-height bg-muted/10 rounded-xl border border-border flex flex-col overflow-hidden">
-          <div className="bg-muted px-4 py-2 border-b border-border text-sm text-center font-mono text-muted-foreground">
+        <div className="preview-frame preview-height flex flex-col overflow-hidden rounded-2xl border">
+          <div className="preview-mode-banner border-b px-4 py-2 text-center font-mono text-xs font-medium">
             Live Preview Mode (Responses will not be saved)
           </div>
           <div className="flex-1 w-full relative">

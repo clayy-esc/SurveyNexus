@@ -39,7 +39,7 @@ export const LoginPage: React.FC = () => {
       <StarfieldBackground />
       <div className="relative z-10 w-full max-w-md flex flex-col items-center">
         <div className="mb-8 flex justify-center w-full">
-          <SurveyNexusLogo size={48} showText={true} subtitle="Cosmic Intelligence Platform" interactive={true} />
+          <SurveyNexusLogo size={48} showText={true} subtitle="Survey Builer Platform" interactive={true} />
         </div>
         <Card className="w-full shadow-xl border-border/50 backdrop-blur-xl bg-card/80">
         <CardHeader className="space-y-1 text-center">

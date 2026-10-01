@@ -18,17 +18,18 @@
 
 @layer base {
   :root {
-    --background: #f8f7ff;
-    --foreground: #181124;
+    --background: #faf9ff;
+    --foreground: #171329;
     --starfield-star: #7c3aed;
     --starfield-nebula-secondary: #c4b5fd;
     --card: #ffffff;
-    --card-foreground: #181124;
-    --primary: #6b21a8;
+    --card-foreground: #171329;
+    --primary: #5120a4;
     --primary-foreground: #ffffff;
-    --border: #e6e0f8;
-    --muted: #f0ebfa;
-    --muted-foreground: #6d5f8a;
+    --border: #e5ddf4;
+    --muted: #f0eaff;
+    --muted-foreground: #665c83;
+    --surface-soft: #fbfaff;
   }
 
   .dark {
@@ -42,7 +43,8 @@
     --primary-foreground: #181124;
     --border: #272144;
     --muted: #1d1832;
-    --muted-foreground: #8b7ca6;
+    --muted-foreground: #a795c4;
+    --surface-soft: #17112a;
   }
 
   * {
@@ -159,29 +161,41 @@
 
   .public-survey-shell {
     background-image: radial-gradient(circle at 1px 1px, color-mix(in srgb, currentColor 8%, transparent) 1px, transparent 0);
-    background-size: 26px 26px;
+    background-size: 28px 28px;
   }
 
   .public-survey-card {
-    box-shadow: 0 24px 70px color-mix(in srgb, currentColor 10%, transparent);
-    backdrop-filter: blur(18px);
+    box-shadow: 0 20px 48px color-mix(in srgb, var(--primary) 10%, transparent);
+    backdrop-filter: blur(14px);
   }
 
   .public-survey-option {
-    box-shadow: 0 4px 12px color-mix(in srgb, currentColor 4%, transparent);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--primary) 6%, transparent);
   }
 
   .public-survey-option:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 22px color-mix(in srgb, currentColor 8%, transparent);
+    box-shadow: 0 10px 22px color-mix(in srgb, var(--primary) 12%, transparent);
   }
 
   .public-survey-input::placeholder {
-    color: color-mix(in srgb, currentColor 48%, transparent);
+    color: color-mix(in srgb, var(--primary) 42%, transparent);
   }
 
   .public-survey-scale {
-    box-shadow: 0 5px 14px color-mix(in srgb, currentColor 5%, transparent);
+    box-shadow: 0 5px 14px color-mix(in srgb, var(--primary) 8%, transparent);
+  }
+
+  .preview-frame {
+    border-color: color-mix(in srgb, var(--primary) 22%, var(--border));
+    background: color-mix(in srgb, var(--primary) 4%, var(--card));
+    box-shadow: 0 18px 44px color-mix(in srgb, var(--primary) 8%, transparent);
+  }
+
+  .preview-mode-banner {
+    background: color-mix(in srgb, var(--primary) 7%, var(--card));
+    color: var(--muted-foreground);
+    border-color: color-mix(in srgb, var(--primary) 16%, var(--border));
   }
 
   @media (max-width: 640px) {

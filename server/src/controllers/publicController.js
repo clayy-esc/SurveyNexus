@@ -5,7 +5,7 @@ exports.getSurvey = async (req, res, next) => {
   try {
     const survey = await Survey.findOne({
       publicSlug: req.params.slug,
-    }).select('title description questions theme settings publicSlug status');
+    }).select('title description questions logic theme settings publicSlug status');
 
     if (!survey) {
       return res.status(404).json({ error: 'Survey not found or no longer available.' });

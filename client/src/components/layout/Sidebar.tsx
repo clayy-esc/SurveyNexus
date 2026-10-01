@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, FileSpreadsheet, Eye, BarChart3, Palette, Settings, LogOut, X, Sparkles } from 'lucide-react';
+import { PanelsTopLeft, GitBranch, MonitorPlay, ChartNoAxesCombined, ListChecks, Palette, Settings2, LogOut, X } from 'lucide-react';
 import { SurveyNexusLogo } from '../common/SurveyNexusLogo';
 
 interface SidebarProps {
@@ -31,13 +31,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ surveyId, onLogout, isMobileOp
     if (!surveyId) return [];
     const base = `/dashboard/${surveyId}`;
     return [
-      { to: `${base}/builder`, icon: LayoutDashboard, label: 'Form Builder' },
-      { to: `${base}/logic`, icon: FileSpreadsheet, label: 'Logic Flow' },
-      { to: `${base}/preview`, icon: Eye, label: 'Preview' },
-      { to: `${base}/analytics`, icon: BarChart3, label: 'Analytics' },
-      { to: `${base}/submissions`, icon: FileSpreadsheet, label: 'Submissions' },
+      { to: `${base}/builder`, icon: PanelsTopLeft, label: 'Form Builder' },
+      { to: `${base}/logic`, icon: GitBranch, label: 'Logic Flow' },
+      { to: `${base}/preview`, icon: MonitorPlay, label: 'Preview' },
+      { to: `${base}/analytics`, icon: ChartNoAxesCombined, label: 'Analytics' },
+      { to: `${base}/submissions`, icon: ListChecks, label: 'Submissions' },
       { to: `${base}/theme`, icon: Palette, label: 'Theme' },
-      { to: `${base}/settings`, icon: Settings, label: 'Settings' },
+      { to: `${base}/settings`, icon: Settings2, label: 'Settings' },
     ];
   };
 
@@ -57,7 +57,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ surveyId, onLogout, isMobileOp
       )}
       <aside id="survey-navigation" aria-label="Survey navigation" className={`fixed inset-y-0 left-0 z-40 flex h-screen w-72 shrink-0 -translate-x-full flex-col border-r border-border bg-card/90 shadow-xl backdrop-blur-xl transition-transform duration-200 ease-out md:static md:w-64 md:translate-x-0 md:transition-none ${isMobileOpen ? 'translate-x-0' : ''}`}>
       <div className="h-20 flex items-center px-5 border-b border-border">
-        <SurveyNexusLogo size={36} showText={true} subtitle="Signal Studio" interactive={true} />
+        <SurveyNexusLogo size={36} showText={true} subtitle="Survey Builer Platform" interactive={true} />
         <button
           type="button"
           onClick={closeOnMobile}
@@ -71,10 +71,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ surveyId, onLogout, isMobileOp
       <div className="flex-1 overflow-y-auto px-3 py-6">
         {navLinks.length > 0 ? (
           <nav className="space-y-1">
-            <div className="mb-3 flex items-center gap-2 px-3 text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
-              <Sparkles className="h-3.5 w-3.5 text-primary" />
-              Survey Context
-            </div>
             {navLinks.map((link) => (
               <NavLink
                 key={link.to}

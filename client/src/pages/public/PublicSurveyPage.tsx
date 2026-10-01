@@ -164,8 +164,8 @@ export const PublicSurveyPage: React.FC = () => {
   }
 
   const configuredTheme: SurveyTheme = survey.theme || {
-    primaryColor: '#6b21a8',
-    backgroundColor: '#f8f7ff',
+    primaryColor: '#5120a4',
+    backgroundColor: '#faf9ff',
     fontFamily: 'Manrope',
     layout: 'single_page',
     customCSS: '',
@@ -216,7 +216,7 @@ export const PublicSurveyPage: React.FC = () => {
           onChange={(e) => setAnswers({...answers, [question.id]: e.target.value})}
           placeholder="Enter your answer"
           className="public-survey-input min-h-37.5 w-full resize-y rounded-2xl p-4 text-lg focus:outline-none focus:ring-2 focus:ring-opacity-50 focus:border-transparent transition-all"
-          style={{ '--tw-ring-color': theme.primaryColor, color: textColor, backgroundColor: isDarkTheme ? '#0f172a' : '#f9fafb', border: `1px solid ${controlBorderColor}` } as any}
+          style={{ '--tw-ring-color': theme.primaryColor, color: textColor, backgroundColor: isDarkTheme ? '#0f172a' : '#fbfaff', border: `1px solid ${controlBorderColor}` } as any}
         />
       )}
 
@@ -272,7 +272,7 @@ export const PublicSurveyPage: React.FC = () => {
           value={answers[question.id] || ''}
           onChange={(e) => setAnswers({...answers, [question.id]: e.target.value})}
           className="public-survey-input w-full appearance-none rounded-2xl p-4 pr-12 text-lg focus:outline-none focus:ring-2 focus:ring-opacity-50 transition-all"
-          style={{ '--tw-ring-color': theme.primaryColor, color: textColor, backgroundColor: isDarkTheme ? '#0f172a' : '#f9fafb', border: `1px solid ${controlBorderColor}` } as any}
+          style={{ '--tw-ring-color': theme.primaryColor, color: textColor, backgroundColor: isDarkTheme ? '#0f172a' : '#fbfaff', border: `1px solid ${controlBorderColor}` } as any}
         >
           <option value="" disabled>Select an option</option>
           {question.options.map((opt, i) => (
@@ -334,7 +334,7 @@ export const PublicSurveyPage: React.FC = () => {
           <h2 className="text-2xl font-bold mb-2 animate-in slide-in-from-bottom-4 fade-in delay-300 duration-500 ease-out fill-mode-both" style={{ color: textColor }}>Thank you!</h2>
           <p className="animate-in slide-in-from-bottom-2 fade-in delay-[400ms] duration-500 ease-out fill-mode-both" style={{ color: mutedTextColor }}>Your response has been recorded.</p>
           {isPreview && (
-            <div className="mt-8 p-4 bg-amber-50 text-amber-800 text-sm rounded-lg border border-amber-200 animate-in fade-in delay-[500ms] duration-500 fill-mode-both">
+            <div className="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800 animate-in fade-in delay-[500ms] duration-500 fill-mode-both">
               Note: You are in Preview Mode. This submission was not saved to the database.
             </div>
           )}
@@ -399,7 +399,7 @@ export const PublicSurveyPage: React.FC = () => {
                   </section>
                 ))}
               </div>
-              <div className="public-survey-footer flex items-center justify-end border-t px-6 py-5 sm:px-10" style={{ backgroundColor: isDarkTheme ? '#0f172a' : '#f9fafb', borderColor: controlBorderColor }}>
+              <div className="public-survey-footer flex items-center justify-end border-t px-6 py-5 sm:px-10" style={{ backgroundColor: isDarkTheme ? '#0f172a' : '#fbfaff', borderColor: controlBorderColor }}>
                 <div className="flex items-center gap-4">
                   {validationError && <p className="text-sm font-semibold" style={{ color: '#dc2626' }}>{validationError}</p>}
                   <Button
@@ -451,7 +451,7 @@ export const PublicSurveyPage: React.FC = () => {
                     onChange={(e) => setAnswers({...answers, [currentQ.id]: e.target.value})}
                     placeholder="Enter your answer"
                     className="public-survey-input min-h-37.5 w-full resize-y rounded-2xl p-4 text-lg focus:outline-none focus:ring-2 focus:ring-opacity-50 focus:border-transparent transition-all"
-                    style={{ '--tw-ring-color': theme.primaryColor, color: textColor, backgroundColor: isDarkTheme ? '#0f172a' : '#f9fafb', border: `1px solid ${controlBorderColor}` } as any}
+                    style={{ '--tw-ring-color': theme.primaryColor, color: textColor, backgroundColor: isDarkTheme ? '#0f172a' : '#fbfaff', border: `1px solid ${controlBorderColor}` } as any}
                   />
                 )}
 
@@ -507,7 +507,7 @@ export const PublicSurveyPage: React.FC = () => {
                     value={answers[currentQ.id] || ''}
                     onChange={(e) => setAnswers({...answers, [currentQ.id]: e.target.value})}
                     className="public-survey-input w-full appearance-none rounded-2xl p-4 pr-12 text-lg focus:outline-none focus:ring-2 focus:ring-opacity-50 transition-all"
-                    style={{ '--tw-ring-color': theme.primaryColor, color: textColor, backgroundColor: isDarkTheme ? '#0f172a' : '#f9fafb', border: `1px solid ${controlBorderColor}` } as any}
+                    style={{ '--tw-ring-color': theme.primaryColor, color: textColor, backgroundColor: isDarkTheme ? '#0f172a' : '#fbfaff', border: `1px solid ${controlBorderColor}` } as any}
                   >
                     <option value="" disabled>Select an option</option>
                     {currentQ.options.map((opt, i) => (
@@ -563,7 +563,7 @@ export const PublicSurveyPage: React.FC = () => {
             </div>
             
             {/* Action Footer */}
-            <div className="public-survey-footer flex items-center justify-between border-t px-6 py-5 sm:px-10" style={{ backgroundColor: isDarkTheme ? '#0f172a' : '#f9fafb', borderColor: controlBorderColor }}>
+            <div className="public-survey-footer flex items-center justify-between border-t px-6 py-5 sm:px-10" style={{ backgroundColor: isDarkTheme ? '#0f172a' : '#fbfaff', borderColor: controlBorderColor }}>
               <Button 
                 variant="ghost" 
                 onClick={handlePrevious} 

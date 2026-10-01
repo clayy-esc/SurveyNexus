@@ -9,7 +9,7 @@ import { Button } from '../../components/ui/Button';
 import { Input } from '../../components/ui/Input';
 import { Select } from '../../components/ui/Select';
 import api from '../../lib/api';
-import { ArrowRight, Layers3, Layout, Palette, Sparkles, Type } from 'lucide-react';
+import { ArrowRight, Layers3, Layout, MoonStar, Palette, SunMedium, Type, WandSparkles } from 'lucide-react';
 
 type ThemeDraft = {
   primaryColor: string;
@@ -144,7 +144,7 @@ export const ThemePage: React.FC = () => {
         {/* Editor */}
         <div className="w-96 shrink-0 space-y-5 overflow-y-auto pb-8 pr-2">
           <div>
-            <div className="mb-3 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-primary"><Sparkles className="h-3.5 w-3.5" /> Visual direction</div>
+            <div className="mb-3 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-primary"><WandSparkles className="h-3.5 w-3.5" /> Visual direction</div>
             <h2 className="text-3xl font-extrabold tracking-tight">Make it yours</h2>
             <p className="mt-2 text-sm leading-6 text-muted-foreground">Choose a starting point, then tune the details. The preview mirrors the published respondent view.</p>
           </div>
@@ -188,6 +188,7 @@ export const ThemePage: React.FC = () => {
                     onClick={() => setPreviewMode(mode)}
                     className={`flex-1 rounded px-3 py-2 text-sm font-medium capitalize transition-colors ${previewMode === mode ? 'bg-background text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'}`}
                   >
+                    {mode === 'light' ? <SunMedium className="mr-1.5 h-4 w-4 text-amber-500" /> : <MoonStar className="mr-1.5 h-4 w-4 text-primary" />}
                     {mode}
                   </button>
                 ))}
@@ -289,7 +290,7 @@ export const ThemePage: React.FC = () => {
             <div className="h-1.5" style={{ backgroundColor: previewPrimaryColor }} />
             <div className="p-6 sm:p-10">
               <div className="mb-7 flex items-center justify-between">
-                <div className="flex items-center gap-3"><div className="flex h-9 w-9 items-center justify-center rounded-xl" style={{ backgroundColor: `${previewPrimaryColor}18`, color: previewPrimaryColor }}><Sparkles className="h-4 w-4" /></div><div><p className="text-sm font-extrabold">{survey.title}</p><p className="text-[9px] font-bold uppercase tracking-[0.16em]" style={{ color: previewMutedTextColor }}>Response workspace</p></div></div>
+                <div className="flex items-center gap-3"><div className="flex h-9 w-9 items-center justify-center rounded-xl" style={{ backgroundColor: `${previewPrimaryColor}18`, color: previewPrimaryColor }}><WandSparkles className="h-4 w-4" /></div><div><p className="text-sm font-extrabold">{survey.title}</p><p className="text-[9px] font-bold uppercase tracking-[0.16em]" style={{ color: previewMutedTextColor }}>Response workspace</p></div></div>
                 <div className="text-right"><p className="text-[9px] font-bold uppercase tracking-[0.16em]" style={{ color: previewMutedTextColor }}>Progress</p><p className="font-mono text-xs font-bold" style={{ color: previewPrimaryColor }}>1 of 4</p></div>
               </div>
               <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.2em]" style={{ color: previewPrimaryColor }}>A few considered questions</p>

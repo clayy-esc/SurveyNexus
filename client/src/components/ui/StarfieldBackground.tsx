@@ -116,7 +116,7 @@ export const StarfieldBackground: React.FC<StarfieldBackgroundProps> = ({ starCo
     <div className="auth-starfield fixed inset-0 z-0 pointer-events-none overflow-hidden" style={{ backgroundColor: 'var(--background)' }}>
       {/* Nebula gradients for the Milky Way effect */}
       <div
-        className="auth-nebula absolute inset-0 opacity-70 mix-blend-multiply dark:opacity-40 dark:mix-blend-screen"
+        className="auth-nebula absolute inset-0"
         style={{
           background: 'radial-gradient(ellipse 75% 28% at 50% 78%, var(--primary) 0%, transparent 68%), radial-gradient(circle at 18% 24%, var(--primary) 0%, transparent 38%), radial-gradient(circle at 84% 18%, var(--starfield-nebula-secondary) 0%, transparent 34%)'
         }}

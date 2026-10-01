@@ -29,7 +29,6 @@
     --border: #e5ddf4;
     --muted: #f0eaff;
     --muted-foreground: #665c83;
-    --surface-soft: #fbfaff;
   }
 
   .dark {
@@ -44,7 +43,6 @@
     --border: #272144;
     --muted: #1d1832;
     --muted-foreground: #a795c4;
-    --surface-soft: #17112a;
   }
 
   * {
@@ -212,6 +210,7 @@
     --muted-foreground: #b9acd7;
     position: relative;
     isolation: isolate;
+    color-scheme: dark;
     color: var(--foreground);
   }
 
@@ -236,6 +235,14 @@
 
   .auth-page .auth-brand {
     filter: drop-shadow(0 10px 28px rgba(102, 55, 210, 0.22));
+  }
+
+  .auth-page .auth-brand .text-foreground {
+    color: #f5f0ff !important;
+  }
+
+  .auth-page .auth-brand .text-muted-foreground {
+    color: #b9acd7 !important;
   }
 
   .auth-layout {
@@ -276,8 +283,8 @@
   }
 
   .auth-page .auth-panel {
-    border-color: rgba(218, 201, 255, 0.28);
-    background: linear-gradient(180deg, rgba(26, 18, 56, 0.84), rgba(8, 5, 22, 0.72));
+    border-color: rgba(218, 201, 255, 0.28) !important;
+    background: linear-gradient(180deg, #191238 0%, #080516 100%);
     box-shadow: 0 28px 90px rgba(25, 7, 67, 0.58), inset 0 1px 0 rgba(255, 255, 255, 0.12);
     color: #f5f0ff !important;
   }
@@ -291,33 +298,41 @@
   }
 
   .auth-page .auth-panel input {
-    border-color: rgba(205, 184, 255, 0.18);
-    background: rgba(3, 2, 12, 0.52);
+    border-color: rgba(218, 201, 255, 0.3) !important;
+    background: #070611 !important;
     color: #f5f0ff !important;
   }
 
   .auth-page .auth-panel input:hover {
-    border-color: rgba(126, 87, 224, 0.48);
+    border-color: rgba(196, 168, 255, 0.58) !important;
   }
 
   .auth-page .auth-panel input:focus-visible {
-    border-color: #8b5cf6;
+    border-color: #b69aff !important;
     box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.18);
   }
 
   .auth-page .auth-panel button[type='submit'] {
     background: linear-gradient(100deg, #d9d0ff 0%, #9574ff 45%, #6940eb 100%);
-    color: #211047;
+    color: #211047 !important;
     box-shadow: 0 12px 28px rgba(92, 48, 215, 0.28);
+    transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
   }
 
   .auth-page .auth-panel button[type='submit']:hover {
-    opacity: 0.92;
     transform: translateY(-1px);
+    filter: brightness(1.08) saturate(1.08);
+    box-shadow: 0 16px 34px rgba(112, 66, 238, 0.42);
   }
 
   .auth-page .auth-panel button[type='button'] {
-    color: #c9baff;
+    color: #e5dbff !important;
+    background-color: transparent !important;
+  }
+
+  .auth-page .auth-panel button[type='button']:hover {
+    background-color: rgba(139, 92, 246, 0.18) !important;
+    color: #ffffff !important;
   }
 
   @media (max-width: 640px) {

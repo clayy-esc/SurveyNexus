@@ -78,6 +78,3 @@ export const DropdownItem: React.FC<React.HTMLAttributes<HTMLDivElement> & { dis
   );
 };
 
-export const DropdownDivider: React.FC = () => (
-  <div className="h-px bg-border my-1" />
-);

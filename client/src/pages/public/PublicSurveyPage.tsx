@@ -137,15 +137,19 @@ export const PublicSurveyPage: React.FC = () => {
   };
 
   if (isLoading) {
-    return <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: 'var(--background)' }}><Spinner size="lg" /></div>;
+    return (
+      <div className="public-survey-loading flex min-h-screen items-center justify-center" style={{ backgroundColor: '#faf9ff' }}>
+        <div className="h-8 w-8 animate-spin rounded-full border-2" style={{ borderColor: '#e5ddf4', borderTopColor: '#5120a4' }} />
+      </div>
+    );
   }
 
   if (error || !survey) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center p-4" style={{ backgroundColor: 'var(--background)' }}>
-        <div className="max-w-md w-full p-8 rounded-xl shadow-lg text-center border-t-4 animate-in zoom-in-95 fade-in duration-500" style={{ backgroundColor: 'var(--card)', borderTopColor: 'var(--primary)' }}>
-          <h2 className="text-xl font-bold mb-2" style={{ color: 'var(--foreground)' }}>Survey unavailable</h2>
-          <p style={{ color: 'var(--muted-foreground)' }}>{error}</p>
+      <div className="flex min-h-screen flex-col items-center justify-center p-4" style={{ backgroundColor: '#faf9ff' }}>
+        <div className="w-full max-w-md rounded-2xl border p-8 text-center shadow-lg" style={{ backgroundColor: '#ffffff', borderColor: '#e5ddf4' }}>
+          <h2 className="mb-2 text-xl font-bold" style={{ color: '#171329' }}>Survey unavailable</h2>
+          <p style={{ color: '#665c83' }}>{error}</p>
         </div>
       </div>
     );

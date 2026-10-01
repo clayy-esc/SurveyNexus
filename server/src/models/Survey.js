@@ -71,6 +71,7 @@ const surveySchema = new Schema({
   theme: {
     primaryColor: { type: String, default: '#6366f1' },
     backgroundColor: { type: String, default: '#ffffff' },
+    mode: { type: String, enum: ['light', 'dark'], default: 'light' },
     lightPrimaryColor: { type: String, default: '#6366f1' },
     lightBackgroundColor: { type: String, default: '#ffffff' },
     darkPrimaryColor: { type: String, default: '#818cf8' },

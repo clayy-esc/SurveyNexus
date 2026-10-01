@@ -5,14 +5,11 @@ import api from '../../lib/api';
 import { Spinner } from '../../components/ui/Spinner';
 import { Button } from '../../components/ui/Button';
 import { ArrowLeft, ArrowRight, Check, CheckCircle2 } from 'lucide-react';
-import { useTheme } from '../../contexts/useTheme';
 
 export const PublicSurveyPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const [searchParams] = useSearchParams();
   const isPreview = searchParams.get('preview') === 'true';
-  const { theme: appTheme } = useTheme();
-
   const [survey, setSurvey] = useState<Survey | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -22,7 +19,6 @@ export const PublicSurveyPage: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [validationError, setValidationError] = useState<string | null>(null);
-  const [systemPrefersDark, setSystemPrefersDark] = useState(false);
   const [history, setHistory] = useState<number[]>([]);
 
   useEffect(() => {
@@ -50,14 +46,6 @@ export const PublicSurveyPage: React.FC = () => {
     };
     fetchSurvey();
   }, [slug, isPreview]);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const updateSystemTheme = () => setSystemPrefersDark(mediaQuery.matches);
-    updateSystemTheme();
-    mediaQuery.addEventListener('change', updateSystemTheme);
-    return () => mediaQuery.removeEventListener('change', updateSystemTheme);
-  }, []);
 
   const getNextQuestionIndex = (currentIndex: number): number | 'end' => {
     if (!survey) return 'end';
@@ -170,7 +158,7 @@ export const PublicSurveyPage: React.FC = () => {
     layout: 'single_page',
     customCSS: '',
   };
-  const isDarkTheme = appTheme === 'dark' || (appTheme === 'system' && systemPrefersDark);
+  const isDarkTheme = configuredTheme.mode === 'dark';
   const theme = {
     ...configuredTheme,
     primaryColor: isDarkTheme

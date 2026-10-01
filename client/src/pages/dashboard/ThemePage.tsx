@@ -80,6 +80,7 @@ export const ThemePage: React.FC = () => {
         const res = await api.get(`/surveys/${surveyId}`);
         const s = res.data.survey;
         setSurvey(s);
+        setPreviewMode(s.theme?.mode || 'light');
         if (s.theme) {
           setTheme({
             primaryColor: s.theme.primaryColor || '#6366f1',
@@ -114,6 +115,7 @@ export const ThemePage: React.FC = () => {
     try {
       const themeToSave = {
         ...theme,
+        mode: previewMode,
         primaryColor: theme.lightPrimaryColor,
         backgroundColor: theme.lightBackgroundColor,
       };

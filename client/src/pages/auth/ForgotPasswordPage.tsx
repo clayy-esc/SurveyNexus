@@ -81,6 +81,7 @@ export const ForgotPasswordPage: React.FC = () => {
               id="email"
               type="email"
               label="Account Email"
+              authStyle
               placeholder="name@company.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -102,6 +103,7 @@ export const ForgotPasswordPage: React.FC = () => {
               id="new-password"
               type="password"
               label="New Password"
+              authStyle
               placeholder="••••••••"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}

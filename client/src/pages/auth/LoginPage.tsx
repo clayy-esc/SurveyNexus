@@ -52,24 +52,24 @@ export const LoginPage: React.FC = () => {
               id="email"
               type="email"
               label="Email"
+              authStyle
               placeholder="name@company.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
               disabled={isLoading}
             />
-            <div className="space-y-1">
-              <div className="flex items-center justify-between">
-                <label className="block text-sm font-medium text-foreground" htmlFor="password">
-                  Password
-                </label>
-                <Link to="/forgot-password" className="text-sm font-medium text-primary hover:underline">
+            <div className="space-y-2">
+              <div className="flex justify-end px-1">
+                <Link to="/forgot-password" className="text-xs font-semibold text-primary hover:underline">
                   Forgot password?
                 </Link>
               </div>
               <Input
                 id="password"
                 type="password"
+                label="Password"
+                authStyle
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}

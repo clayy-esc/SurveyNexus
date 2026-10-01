@@ -65,6 +65,7 @@ export const RegisterPage: React.FC = () => {
               id="email"
               type="email"
               label="Email"
+              authStyle
               placeholder="name@company.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -75,6 +76,7 @@ export const RegisterPage: React.FC = () => {
               id="password"
               type="password"
               label="Password"
+              authStyle
               placeholder="••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -86,6 +88,7 @@ export const RegisterPage: React.FC = () => {
               id="confirm-password"
               type="password"
               label="Confirm Password"
+              authStyle
               placeholder="••••••••"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}

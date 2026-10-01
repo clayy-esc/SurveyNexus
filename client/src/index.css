@@ -20,6 +20,8 @@
   :root {
     --background: #f8f7ff;
     --foreground: #181124;
+    --starfield-star: #7c3aed;
+    --starfield-nebula-secondary: #c4b5fd;
     --card: #ffffff;
     --card-foreground: #181124;
     --primary: #6b21a8;
@@ -32,6 +34,8 @@
   .dark {
     --background: #0b0914;
     --foreground: #f1ecf8;
+    --starfield-star: #f1ecf8;
+    --starfield-nebula-secondary: #c084fc;
     --card: #131022;
     --card-foreground: #f1ecf8;
     --primary: #c084fc;

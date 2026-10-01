@@ -34,6 +34,16 @@ export const StarfieldBackground: React.FC<StarfieldBackgroundProps> = ({ starCo
     let mouseY = height / 2;
     let targetMouseX = width / 2;
     let targetMouseY = height / 2;
+    let starColor = getComputedStyle(document.documentElement)
+      .getPropertyValue('--starfield-star')
+      .trim();
+
+    const themeObserver = new MutationObserver(() => {
+      starColor = getComputedStyle(document.documentElement)
+        .getPropertyValue('--starfield-star')
+        .trim();
+    });
+    themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
 
     const handleMouseMove = (e: MouseEvent) => {
       targetMouseX = e.clientX;
@@ -81,11 +91,13 @@ export const StarfieldBackground: React.FC<StarfieldBackgroundProps> = ({ starCo
         if (sx > 0 && sx < width && sy > 0 && sy < height) {
           ctx.beginPath();
           ctx.arc(sx, sy, size, 0, 2 * Math.PI);
-          // Use starlight color
-          ctx.fillStyle = `rgba(241, 236, 248, ${opacity})`;
+          ctx.fillStyle = starColor;
+          ctx.globalAlpha = opacity;
           ctx.fill();
         }
       });
+
+      ctx.globalAlpha = 1;
 
       animationFrameId = requestAnimationFrame(render);
     };
@@ -95,6 +107,7 @@ export const StarfieldBackground: React.FC<StarfieldBackgroundProps> = ({ starCo
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('resize', handleResize);
+      themeObserver.disconnect();
       cancelAnimationFrame(animationFrameId);
     };
   }, [starCount]);
@@ -103,9 +116,9 @@ export const StarfieldBackground: React.FC<StarfieldBackgroundProps> = ({ starCo
     <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden" style={{ backgroundColor: 'var(--background)' }}>
       {/* Nebula gradients for the Milky Way effect */}
       <div
-        className="absolute inset-0 opacity-40 mix-blend-screen"
+        className="absolute inset-0 opacity-70 mix-blend-multiply dark:opacity-40 dark:mix-blend-screen"
         style={{
-          background: 'radial-gradient(circle at 20% 30%, var(--primary) 0%, transparent 40%), radial-gradient(circle at 80% 70%, var(--primary) 0%, transparent 40%)'
+          background: 'radial-gradient(circle at 20% 30%, var(--primary) 0%, transparent 40%), radial-gradient(circle at 80% 70%, var(--starfield-nebula-secondary) 0%, transparent 42%)'
         }}
       />
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />

@@ -5,6 +5,8 @@ export interface SurveyNexusLogoProps {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | number;
   /** Whether to render the 'SurveyNexus' wordmark alongside the mark */
   showText?: boolean;
+  /** Stack the mark above the wordmark for hero-style brand lockups */
+  stacked?: boolean;
   /** Subtitle to show below brand name (e.g. 'Cosmic Intelligence') */
   subtitle?: string;
   /** Whether to enable continuous ambient rotation and pulse */
@@ -33,6 +35,7 @@ const sizeMap = {
 export const SurveyNexusLogo: React.FC<SurveyNexusLogoProps> = ({
   size = 'md',
   showText = false,
+  stacked = false,
   subtitle,
   animated = true,
   interactive = true,
@@ -47,7 +50,7 @@ export const SurveyNexusLogo: React.FC<SurveyNexusLogoProps> = ({
 
   return (
     <div
-      className={`inline-flex items-center gap-3 select-none ${interactive ? 'cursor-pointer' : ''} ${className}`}
+      className={`inline-flex ${stacked ? 'flex-col items-center gap-4' : 'items-center gap-3'} select-none ${interactive ? 'cursor-pointer' : ''} ${className}`}
       onMouseEnter={() => interactive && setIsHovered(true)}
       onMouseLeave={() => interactive && setIsHovered(false)}
       onClick={onClick}
@@ -205,7 +208,7 @@ export const SurveyNexusLogo: React.FC<SurveyNexusLogoProps> = ({
 
       {/* Brand Typography Lockup */}
       {showText && (
-        <div className={`flex flex-col leading-tight ${textClassName}`}>
+        <div className={`flex flex-col leading-tight ${stacked ? 'items-center text-center' : ''} ${textClassName}`}>
           <div className="flex items-baseline tracking-tight font-extrabold text-foreground transition-all duration-300">
             <span className="text-current">Survey</span>
             <span

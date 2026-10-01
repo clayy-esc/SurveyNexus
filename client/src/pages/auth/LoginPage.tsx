@@ -35,13 +35,13 @@ export const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 relative">
+    <div className="auth-page relative flex min-h-screen flex-col items-center justify-center overflow-hidden p-4">
       <StarfieldBackground />
-      <div className="relative z-10 w-full max-w-md flex flex-col items-center">
-        <div className="mb-8 flex justify-center w-full">
-          <SurveyNexusLogo size={48} showText={true} subtitle="Survey Builer Platform" interactive={true} />
+      <div className="auth-layout relative z-10 w-full">
+        <div className="auth-brand auth-brand-panel">
+          <SurveyNexusLogo size={144} showText={true} stacked subtitle="Survey Builer Platform" interactive={true} className="auth-logo" />
         </div>
-        <Card className="w-full shadow-xl border-border/50 backdrop-blur-xl bg-card/80">
+        <Card className="auth-panel auth-form-panel rounded-2xl border shadow-xl">
         <CardHeader className="space-y-1 text-center">
           <CardTitle className="text-2xl">Welcome back</CardTitle>
           <CardDescription>Enter your email to sign in to your account</CardDescription>

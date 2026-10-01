@@ -34,12 +34,12 @@ export const StarfieldBackground: React.FC<StarfieldBackgroundProps> = ({ starCo
     let mouseY = height / 2;
     let targetMouseX = width / 2;
     let targetMouseY = height / 2;
-    let starColor = getComputedStyle(document.documentElement)
+    let starColor = getComputedStyle(canvas)
       .getPropertyValue('--starfield-star')
       .trim();
 
     const themeObserver = new MutationObserver(() => {
-      starColor = getComputedStyle(document.documentElement)
+      starColor = getComputedStyle(canvas)
         .getPropertyValue('--starfield-star')
         .trim();
     });
@@ -113,12 +113,12 @@ export const StarfieldBackground: React.FC<StarfieldBackgroundProps> = ({ starCo
   }, [starCount]);
 
   return (
-    <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden" style={{ backgroundColor: 'var(--background)' }}>
+    <div className="auth-starfield fixed inset-0 z-0 pointer-events-none overflow-hidden" style={{ backgroundColor: 'var(--background)' }}>
       {/* Nebula gradients for the Milky Way effect */}
       <div
-        className="absolute inset-0 opacity-70 mix-blend-multiply dark:opacity-40 dark:mix-blend-screen"
+        className="auth-nebula absolute inset-0 opacity-70 mix-blend-multiply dark:opacity-40 dark:mix-blend-screen"
         style={{
-          background: 'radial-gradient(circle at 20% 30%, var(--primary) 0%, transparent 40%), radial-gradient(circle at 80% 70%, var(--starfield-nebula-secondary) 0%, transparent 42%)'
+          background: 'radial-gradient(ellipse 75% 28% at 50% 78%, var(--primary) 0%, transparent 68%), radial-gradient(circle at 18% 24%, var(--primary) 0%, transparent 38%), radial-gradient(circle at 84% 18%, var(--starfield-nebula-secondary) 0%, transparent 34%)'
         }}
       />
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />

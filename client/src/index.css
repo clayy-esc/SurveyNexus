@@ -158,8 +158,10 @@
   }
 
   .public-survey-shell {
-    background-image: radial-gradient(circle at 1px 1px, color-mix(in srgb, currentColor 8%, transparent) 1px, transparent 0);
-    background-size: 28px 28px;
+    background-image: radial-gradient(ellipse 72% 42% at 50% -8%, color-mix(in srgb, var(--primary) 10%, transparent), transparent 72%);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
   }
 
   .public-survey-card {
@@ -367,9 +369,6 @@
       border-radius: 1.35rem;
     }
 
-    .public-survey-kicker {
-      letter-spacing: 0.14em;
-    }
   }
 
   @keyframes rise-in {

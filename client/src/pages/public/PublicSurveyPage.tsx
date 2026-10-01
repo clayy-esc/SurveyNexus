@@ -4,7 +4,7 @@ import { Survey, LogicRule, SurveyTheme } from '../../types';
 import api from '../../lib/api';
 import { Spinner } from '../../components/ui/Spinner';
 import { Button } from '../../components/ui/Button';
-import { ArrowLeft, ArrowRight, Check, CheckCircle2, Sparkles } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Check, CheckCircle2 } from 'lucide-react';
 import { useTheme } from '../../contexts/useTheme';
 
 export const PublicSurveyPage: React.FC = () => {
@@ -344,49 +344,30 @@ export const PublicSurveyPage: React.FC = () => {
   }
 
   return (
-    <div className={`public-survey-shell flex flex-col transition-colors duration-500 ${isSinglePage ? 'min-h-screen overflow-y-auto' : 'h-screen overflow-hidden'}`} style={{ backgroundColor: theme.backgroundColor, fontFamily: theme.fontFamily, color: textColor }}>
+    <div className={`public-survey-shell flex flex-col transition-colors duration-500 ${isSinglePage || isPreview ? 'min-h-screen overflow-y-auto' : 'h-screen overflow-hidden'}`} style={{ backgroundColor: theme.backgroundColor, fontFamily: theme.fontFamily, color: textColor }}>
       {/* Progress Bar */}
       <div className="public-survey-progress fixed top-0 left-0 right-0 z-50 h-1.5" style={{ backgroundColor: `${theme.primaryColor}22` }}>
         <div className="h-full transition-all duration-500 ease-out" style={{ width: `${progress}%`, backgroundColor: theme.primaryColor }} />
       </div>
 
-      <div className={`public-survey-content flex flex-1 flex-col items-center p-4 pt-12 sm:p-6 sm:pt-14 lg:p-8 lg:pt-16 ${isSinglePage ? 'justify-center' : 'min-h-0 justify-center'}`}>
+      <div className={`public-survey-content flex flex-1 flex-col items-center p-4 pt-12 sm:p-6 sm:pt-14 lg:p-8 lg:pt-16 ${isSinglePage || isPreview ? 'justify-start' : 'min-h-0 justify-center'}`}>
         <div className="w-full max-w-3xl">
-          <div className="mb-8 flex items-center justify-between gap-4">
-            <div className="flex min-w-0 items-center gap-3">
-              <div className="public-survey-mark flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl" style={{ backgroundColor: `${theme.primaryColor}18`, color: theme.primaryColor }}>
-                <Sparkles className="h-5 w-5" />
-              </div>
-              <div className="min-w-0">
-                <p className="truncate text-sm font-extrabold" style={{ color: textColor }}>{survey.title}</p>
-                <p className="public-survey-kicker text-[10px] font-bold uppercase tracking-[0.2em]" style={{ color: mutedTextColor }}>Response workspace</p>
-              </div>
-            </div>
-            <div className="shrink-0 text-right">
-              <p className="public-survey-kicker text-[10px] font-bold uppercase tracking-[0.2em]" style={{ color: mutedTextColor }}>Progress</p>
-              <p className="font-mono text-sm font-bold" style={{ color: theme.primaryColor }}>{progressLabel}</p>
-            </div>
-          </div>
-          
-          {currentQuestionIndex === 0 && (
-            <div className="public-survey-intro mb-10 animate-in fade-in slide-in-from-bottom-4 duration-700">
-              <p className="public-survey-kicker mb-3 text-xs font-bold uppercase tracking-[0.24em]" style={{ color: theme.primaryColor }}>A few considered questions</p>
-              <h1 className="text-4xl font-extrabold leading-tight sm:text-5xl" style={{ color: textColor }}>{survey.title}</h1>
+          <div className="mb-10 flex items-end justify-between gap-6 border-b pb-6" style={{ borderColor: controlBorderColor }}>
+            <div className="min-w-0">
+              <h1 className="text-3xl font-extrabold leading-tight sm:text-4xl" style={{ color: textColor }}>{survey.title}</h1>
               {survey.description && (
-                <p className="mt-4 max-w-2xl text-base leading-7 whitespace-pre-wrap" style={{ color: mutedTextColor }}>{survey.description}</p>
+                <p className="mt-3 max-w-2xl text-base leading-7 whitespace-pre-wrap" style={{ color: mutedTextColor }}>{survey.description}</p>
               )}
             </div>
-          )}
+            <p className="shrink-0 text-sm font-semibold" style={{ color: theme.primaryColor }}>{progressLabel}</p>
+          </div>
 
           {isSinglePage ? (
-            <div className="public-survey-card overflow-hidden rounded-[1.75rem] animate-in fade-in slide-in-from-bottom-4 duration-500" style={{ backgroundColor: surfaceColor, border: `1px solid ${controlBorderColor}` }}>
+            <div className="public-survey-card overflow-hidden rounded-2xl animate-in fade-in slide-in-from-bottom-4 duration-500" style={{ backgroundColor: surfaceColor, border: `1px solid ${controlBorderColor}` }}>
               <div className="p-6 sm:p-10 lg:p-12">
                 {survey.questions.map((question, index) => (
                   <section key={question.id} className={index > 0 ? 'mt-12 border-t pt-10' : ''} style={index > 0 ? { borderColor: controlBorderColor } : undefined}>
                     <div className="mb-8">
-                      <span className="public-survey-kicker mb-3 block text-[10px] font-bold uppercase tracking-[0.2em]" style={{ color: theme.primaryColor }}>
-                        Question {index + 1} of {survey.questions.length}
-                      </span>
                       <h3 className="text-2xl font-extrabold leading-tight sm:text-3xl" style={{ color: textColor }}>
                         {question.title}
                         {question.required && <span className="ml-1" style={{ color: theme.primaryColor }}>*</span>}
@@ -416,13 +397,10 @@ export const PublicSurveyPage: React.FC = () => {
               </div>
             </div>
           ) : (
-          <div className="public-survey-card overflow-hidden rounded-[1.75rem] animate-in fade-in slide-in-from-right-8 duration-500" style={{ backgroundColor: surfaceColor, border: `1px solid ${controlBorderColor}` }}>
+          <div className="public-survey-card overflow-hidden rounded-2xl animate-in fade-in slide-in-from-right-8 duration-500" style={{ backgroundColor: surfaceColor, border: `1px solid ${controlBorderColor}` }}>
             <div className="p-6 sm:p-10 lg:p-12">
               
               <div className="mb-8">
-                <span className="public-survey-kicker mb-3 block text-[10px] font-bold uppercase tracking-[0.2em]" style={{ color: theme.primaryColor }}>
-                  Question {progressLabel}
-                </span>
                 <h3 className="text-2xl font-extrabold leading-tight sm:text-3xl" style={{ color: textColor }}>
                   {currentQ.title}
                   {currentQ.required && <span className="ml-1" style={{ color: theme.primaryColor }}>*</span>}
